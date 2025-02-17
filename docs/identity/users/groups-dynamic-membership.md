@@ -433,7 +433,7 @@ The following device attributes can be used.
  deviceManufacturer | any string value | device.deviceManufacturer -eq "Samsung"
  deviceModel | any string value | device.deviceModel -eq "iPad Air"
  displayName | any string value | device.displayName -eq "Rob iPhone"
- deviceOSType | any string value | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iOS")<br>device.deviceOSType -startsWith "AndroidEnterprise" <br>device.deviceOSType -eq "AndroidForWork"<br>device.deviceOSType -eq "Windows"
+ deviceOSType | any string value | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iOS") -or (device.deviceOSType -eq "IPhone") <br>device.deviceOSType -startsWith "AndroidEnterprise" <br>device.deviceOSType -eq "AndroidForWork"<br>device.deviceOSType -eq "Windows"
  deviceOSVersion | any string value | device.deviceOSVersion -eq "9.1"<br>device.deviceOSVersion -startsWith "10.0.1"
  deviceOwnership | Personal, Company, Unknown | device.deviceOwnership -eq "Company"
  devicePhysicalIds | any string value used by Autopilot, such as all Autopilot devices, OrderID, or PurchaseOrderID  | device.devicePhysicalIDs -any _ -startsWith "[ZTDId]"<br>(device.devicePhysicalIds -any _ -eq "[OrderID]:179887111881"<br>(device.devicePhysicalIds -any _ -eq "[PurchaseOrderId]:76222342342"
@@ -461,6 +461,8 @@ The following device attributes can be used.
  profileType | a valid [profile type](/graph/api/resources/device?view=graph-rest-1.0&preserve-view=true#properties) in Microsoft Entra ID | device.profileType -eq "RegisteredDevice"
  systemLabels | a read-only string matching the Intune device property for tagging Modern Workplace devices | device.systemLabels -startsWith "M365Managed" SystemLabels
 
+> [!NOTE]
+> When an iPhone is enrolled in Intune, the OS type displayed in Microsoft Entra changes from "iOS" to "iPhone". This is because of the additional data that is sent to Azure during the enrolment process. When a device is registered in Entra, it shows the OS as "iOS". However, once the device is enrolled in Intune, it sends more detailed information, including the specific device type, which is then reflected as "iPhone" in Entra. The change in OS type helps provide more granular information about the devices being managed, which can be useful for IT administrators when managing and troubleshooting devices.
 <!-- docutune:enable -->
 
 > [!NOTE]
